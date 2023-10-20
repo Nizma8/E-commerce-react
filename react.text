@@ -1,0 +1,296 @@
+React(aka React.js or ReactJS) is an open-source front-end JavaScript library that is used for building composable user interfaces, especially for -single-page applications
+-React adopts a Declarative approach(telling what to do instead of how to do it)-which means developers describe how the user interface should look based on its current state, and React takes care of updating the DOM (Document Object Model) accordingly. 
+
+
+1. How does React work?
+React creates a virtual DOM. When the state changes in a component it first runs a "diffing" algorithm, which identifies what has changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.
+
+components-React breaks the user interface into small, reusable components.
+          -Each component is a self-contained unit that manages its own state and behavior.
+
+1.Virtual DOM - virtual representation of the actual DOM called the Virtual DOM,mirrors the structure of the real DOM.
+            -When changes occur in your React component's state or props, React first updates the Virtual DOM rather than making immediate      changes to the real DOM(Efficiency).
+            -After updating the Virtual DOM, It compares the current Virtual DOM with the previous one to identify the differences (or "diffs") between them.
+            -Reconciliation: Once React identifies the differences between the Virtual DOMs, it calculates the most efficient way to update the actual DOM to reflect these changes. 
+           
+
+Actual DOM-   Document Object Model: 
+              Slower Updates: (Directly manipulating )
+               Limited Efficiency:
+
+2.One-way data flow - React enforces a unidirectional data flow. Data flows from the top-level component down to child components. Parent components pass data to their children via props, and children communicate back to parents through callbacks.
+
+
+3.Supports server-side rendering which is useful for Search Engine Optimizations(SEO).
+4.Follows Unidirectional or one-way data flow or data binding.
+5.Uses reusable/composable UI components to develop the view.
+2.   component:
+
+Their names always begin with a capital letter.
+They return JSX markup.
+Reusable Component - you can create components that are composed of other components
+
+
+3. When to use a Class Component over a Function Component?
+
+After the addition of Hooks(i.e. React 16.8 onwards) it is always recommended to use Function components over Class components in React. Because you could use state, lifecycle methods and other features that were only available in class component present in function component too.
+
+But even there are two reasons to use Class components over Function components.
+
+1.If you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries.
+2.In older versions, If the component needs state or lifecycle methods then you need to use class component.
+
+
+
+
+
+
+
+7. Form Component
+<input>
+<select>
+<textarea> 
+hese built-in browser components accept user input:because passing the value prop to them makes them controlled.- An input form element whose value is controlled by React in this way is called a controlled component
+
+
+8. state
+object that holds some information that may change over the lifetime of the component
+whenever the state object changes, the component re-renders. 
+
+useState Hook-Add state variable to your component.
+-useState accepts an initial state and returns an array two values:
+
+The current state.- During the first render, it will match the initialState you have passed.
+The set function that lets you update the state to a different value and trigger a re-render.
+You can’t call it inside loops or conditions.
+
+
+
+9.setting up a react.js environment
+  -When you run "npx create-react-app" <app-name>, npx is going to download the most recent create-react-app release, run it, and then remove it from your system.
+  -create-react-app created a "file structure" in the folder you told it to (todolist in this case), and "initialized a Git repository".
+  -added a few commands in the package.json file:
+  -immediately start the app by going into the newly created application folder and running npm start.
+  -By default this command launches the app on your local port 3000
+
+10.folders/files in react app
+  -node_modules/
+  -public-contain index.html(The index.html file serves as the entry point for your app,)
+  -index.js-Entry point of the application. responsible for rendering the root component into the DOM.
+  -App.js-Root component
+  -routes
+  -services/-for api communication
+  -package.json- containe dependencies & scripts.
+  -readme.md
+
+11.Using Babel with React
+   -We use Babel with React to transpile the JSX code into simple React functions that can be understood by browsers.
+   -Using this way we can assure that our JSX code can work in almost any browser.
+   -create-react-app - Essentially, using this command, you need not worry about installing Babel 
+4. Can web browsers read JSX directly? 
+   Web browsers cannot read JSX directly. This is because they are built to only read regular JS objects and JSX is not a regular JavaScript object 
+   For a web browser to read a JSX file, the file needs to be transformed into a regular JavaScript object. For this, we use Babel
+12.Jsx
+  -JSX is a syntax extension for JavaScript
+  -HTML-like Code inside a JavaScript file.
+  -multiole eleents inside a single parent - wrap them with a single parent tag.-for that This empty tag is called a Fragment
+  -JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
+  -Closse all tag
+  -camelCase all most of the things!
+  -The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX.
+  -in order to embed a JavaScript expression inside JSX, the JavaScript must be wrapped with curly braces, {}.
+  -use a ternary expression instead:conditional rendering
+  -when you need an inline style, you pass an object to the style attribute:
+  -{{ and }} is not special syntax: it’s a JavaScript object tucked inside JSX curly braces.
+
+13.Conditional Rendering
+  -display different things depending on different conditions
+  -&&, and ? : operators.
+14.REact Components
+ ---component:
+       A Component is one of the core building blocks of React.
+       You can see a UI broken down into multiple individual pieces called components
+       work on them independently 
+       and merge them all in a parent component which will be your final UI. 
+       Their names always begin with a capital letter.
+       They return JSX markup.
+ Reusable Component - you can create components that are composed of other components
+ 
+ 
+ 3. When to use a Class Component over a Function Component?
+ 
+ After the addition of Hooks(i.e. React 16.8 onwards) it is always recommended to use Function components over Class components in React. Because you could use state, lifecycle methods and other features that were only available in class component present in function component too.
+ 
+ But even there are two reasons to use Class components over Function components.
+ 
+ 1.If you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries.
+ 2.In older versions, If the component needs state or lifecycle methods then you need to use class component.
+
+
+ The class component uses ES6 class syntax, and it extends React components with a render method that returns React elements.
+
+ Functional components with hooks are purely JavaScript functions that also return React elements. Before the introduction of hooks, functional components were stateless.
+
+
+
+ 5. what are props?
+
+
+-Data sharing from parent to child
+-React components use props to communicate with each other. 
+-but you can pass any JavaScript value through them, including objects, arrays, and functions.
+-React component functions accept a single argument, a props object:
+-Props are not always static.
+-props are immutable,
+-you can’t change props. When you need interactivity, you’ll need to set state.
+-Data or values are passed from the parent component as attribute
+-The component receives the argument as a props object:
+
+
+
+
+6.what are states?
+
+
+-state in functional components allows you to store and manage data that can change over time and can trigger re-renders when the state changes
+-State variables are declared by calling the useState Hook.
+-Calling Hooks, including useState, is only valid at the top level of a component or another Hook.
+-state is fully private to the component declaring it
+-The useState function returns an array with two elements: the current state value and a function to update the state.
+-You can render the state value in your component's JSX. Any time the state changes, React will automatically re-render the component,  updating  the rendered output.
+-state is only accessible in the componnet in which its is defined
+-use props share state between components ,context api ,redux, state lifting
+
+7.how rendering occurs?
+
+Reconciliation and Virtual DOM: After the state is updated, React will initiate a process called reconciliation. It calculates the difference between the previous virtual DOM (a lightweight representation of the actual DOM) and the new virtual DOM based on the updated state.
+
+Re-render: React determines what parts of the actual DOM need to be updated to match the new virtual DOM. It then efficiently applies these changes to the real DOM. React will only update the portions of the DOM that have changed, which is much more efficient than re-rendering the entire DOM.
+
+React uses a diffing algorithm to minimize DOM manipulation, making updates as performant as possible. This approach is one of the reasons why React is known for its efficiency and speed.
+
+Lifecycle Methods: During the update process, React calls specific lifecycle methods like render, componentDidUpdate (in class components), or re-executes the functional component body (in functional components). These methods allow you to handle any side effects or additional logic associated with the state change.
+
+props    -props get passed to the component 
+         -Props are used to pass data from a parent component to a child component, 
+         -Data from props is read-only, 
+         -cannot be modified by a component (immutable)
+                                                      
+
+
+
+
+state       -whereas state is managed within the component 
+            - state is used to manage data within a component.
+            -State data can be modified by its own component, but is private(cannot be acce form outside)
+            -mutable
+
+8.Rendering a list in react
+  1. storing the list in an array.
+ 
+  2. Inside your component's return statement, use the map function to loop through your list and generate JSX for each item
+ -key
+  -A “key” is a special string attribute you need to include when creating lists of elements in React
+  -Keys are used in React to identify which items in the list are changed, updated, or deleted.so that that avoids unnecessary re-rendering of items.
+  Accessibility: When elements in a list have unique keys, it can improve the accessibility of your application. It makes it easier for screen readers and other assistive technologies to identify and navigate the individual items in the list.
+  -Keys are internal to React and can not be accessed from inside of the component like props. 
+------------------------------------------------------REDUX-----------------------------------------------------------------------------------
+
+-Redux is a state management library commonly used with React.js to manage the state of your application.
+-Inorder to avoid props drilling. 
+-Redux is simply a store
+        - To store the state of the variables in your app.
+-Provider Selector from react-Redux
+        - To provide store to react appllication.
+-Actions -Redux actions are events.
+         -They are the only way you can send data from your application to your Redux store. 
+         -The data can be from user interactions, API calls, or even form submissions.
+         -Actions are plain JavaScript objects that must have:
+
+         -A type property to indicate the type of action to be carried out
+         -A payload object that contains the information that should be used to change the state
+         -Actions are executed using the dispatch() method, which sends the action to the store:-useDispatch(){hook react-redux}
+-Reducer-Reducers are js pure functions that take the current state of an application, perform an action, and return a new state
+        -The reducer handles how the state (application data) will change in response to an action:
+        -A reducer is a pure function that takes the current state and an action as arguments, and it returns a new state
+-To access updated state from store by component using useSelector (react redux library)hook
+
+An action is dispatched, indicating the desired state change.
+The action is processed by the appropriate reducer(s), which return a new state based on the current state and the action.
+The store updates its state with the new state returned by the reducer.
+React components that are connected to the store are re-rendered to reflect the updated state.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+React state: Built in  object
+-setstate
+Life-cycle-
+1.Mounting phase-
+-constructor()
+-getDerivedStateFromProps()
+-render()
+-componentDidMount()
+
+
+2.Updating phase-
+  
+3.Unmounting phase
+3.React Hooks
+4.difference between fun and class components-
+function component    1.js pure function accept props as an argumnt
+                         and return jsx
+                      2.No need of render function
+                      3. run code from top to bottom , once jsx return it cant be
+                         alive again
+                      4. Stateless component
+                      5. hooks are used
+                      6. constructor is not used
+                      7.Life cycle method componentDidMount is not used
+
+class componnet-      1.class extends(The extends keyword is used to create a child class of another class (parent).The child class                   inherits all the methods from another class.) from react componet and render function 
+                        it return resct element
+                      2. Need render function to return jsx
+                      3.compnent alive depend on life cycle phase 
+                      4.Statelful component
+                      5.No need to use hook 
+                      6.Use constructor to initialise state
+                      7.life  cycle methods are used in class based component 
+                      
+list
+from-Controlled Component-Manged by react Components
+    -Uncontrolled Component-mange by dom
+Api call
+   - Axios Library :return promise
+UseEffect
+   -
+Api call
+Routing-reacter-router-dom
+   -We wrap our content first with <BrowserRouter>(here-index.js)
+   -place all component need to setuopo path inside in app component
+   -to set up path for components use route
+   -Link-
+React-folder
+  -Pages Folder
+    -The files in the pages folder indicate the route of the react application. Each file in this folder contains its route. A page can contain its sub folder. Each page has its state and is usually used to call an sync operation. It usually consists of various components grouped.
+   -Component Folder
+   -React-Douter-Dom
+   -state lifting
+   -context Api
+Render -convert jsx to html 
+what is react.js-features
+
+for data to be permenantly store- json-server (sincr its in another [port we will api call to the port]),local storage
+
+InVoice Generator
+Hot5el Room Booking
+ crud and local; storage projects-
+ -Contact Management System:
+ Develop a contact management system where users can add, edit, and delete contacts. Store contact information in local storage and include features like searching for contacts or grouping them into categories.
+  -Journal/Diary App:
+Create a journal or diary application where users can write and manage journal entries. Use local storage to save entries and allow users to search for and edit previous entries.
+ -Expense Tracker:
+Create an expense tracker application that enables users to add, edit, and delete expenses. You can also include features like sorting expenses by date, category, or amount.
+
+E-commerce website clone with functionalities - You can create a clone of your favourite e-commerce shopping website with some functionalities such as Add to Cart, Price Calculator etc. This project will be ideal to add in your resume/portfolio. *** ⚠ Warning: Use it for only learning purpose to avoid copyright ⚠ ***- intermediate
+
+News Web App - You can create a news website using ReactJs which will fetch live news from an API, and display it in the webpage. This can be a project worthy enough to add to your resume/portfolio. - Advanced
+
+Online JavaScript Compiler - Although JavaScript can be compiled in the Browser console, creating an interactive JavaScript editor will boost your ReactJs skills. You can create an online JavaScript Compiler using JavaScript and ReactJs that compiles JavaScript in the browser itself. You can add other functionalities as well such as saving the document, syntax check etc.-Advanced
